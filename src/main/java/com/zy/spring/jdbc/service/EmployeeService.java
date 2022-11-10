@@ -2,11 +2,15 @@ package com.zy.spring.jdbc.service;
 
 import com.zy.spring.jdbc.dao.EmployeeDao;
 import com.zy.spring.jdbc.entity.Employee;
+import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.util.Date;
-
+@Service
 public class EmployeeService {
+    @Resource
     private EmployeeDao employeeDao;
+    @Resource
     private BatchService batchService;
 
     public void batchImport() {
