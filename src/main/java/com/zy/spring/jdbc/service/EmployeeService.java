@@ -3,6 +3,7 @@ package com.zy.spring.jdbc.service;
 import com.zy.spring.jdbc.dao.EmployeeDao;
 import com.zy.spring.jdbc.entity.Employee;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
@@ -17,6 +18,11 @@ public class EmployeeService {
     @Resource
     private BatchService batchService;
 
+    //不需要使用事务的方法
+    @Transactional(propagation = Propagation.NOT_SUPPORTED,readOnly = true)
+    public Employee findById(Integer eno){
+        return employeeDao.findById(eno);
+    }
     public void batchImport() {
         for (int i = 1; i <= 10; i++) {
             /*if(i==3){
