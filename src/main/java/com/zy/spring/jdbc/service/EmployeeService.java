@@ -3,10 +3,14 @@ package com.zy.spring.jdbc.service;
 import com.zy.spring.jdbc.dao.EmployeeDao;
 import com.zy.spring.jdbc.entity.Employee;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import java.util.Date;
 @Service
+//声明式事务核心注解
+//放在类上，将声明式事务配置应用于当前类的所有方法，默认事务传播为REQUIRED
+@Transactional
 public class EmployeeService {
     @Resource
     private EmployeeDao employeeDao;
